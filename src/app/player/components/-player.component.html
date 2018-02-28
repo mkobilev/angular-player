@@ -1,0 +1,15 @@
+<div class="player-timeline">
+  <audio-timeline [times]="player.times$ | async" (seek)="player.seek($event)"></audio-timeline>
+</div>
+
+<player-controls 
+  [currentTime]="player.currentTime$" 
+  [cursor]="player.cursor$ | async" 
+  [player]="player.player$ | async"
+  [track]="player.track$ | async" 
+  (decreaseVolume)="player.decreaseVolume()" 
+  (increaseVolume)="player.increaseVolume()" 
+  (pause)="player.pause()"
+  (play)="player.play()" 
+  (select)="player.select({trackId: $event})">
+</player-controls>

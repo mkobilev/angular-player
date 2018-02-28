@@ -1,0 +1,22 @@
+<div class="player-controls" *ngIf="track">
+  <div>
+    <icon-button icon="skip-previous" (onClick)="previous()"></icon-button>
+    <icon-button [icon]="player.isPlaying ? 'pause' : 'play'" (onClick)="player.isPlaying ? pause.emit() : play.emit()"></icon-button>
+    <icon-button icon="skip-next" (onClick)="next()"></icon-button>
+  </div>
+
+  <div class="player-controls__time">{{currentTime | async | formatTime}} / {{track.duration | formatTime:'ms'}}</div>
+  <div class="player-controls__title">{{track.title}}</div>
+
+  <div class="player-controls__volume">
+    <icon-button icon="remove" (onClick)="decreaseVolume.emit()"></icon-button>
+    <span>{{player.volume | formatVolume}}</span>
+    <icon-button icon="add" (onClick)="increaseVolume.emit()"></icon-button>
+  </div>
+
+  <div class="player-controls__volume">
+    <icon-button icon="remove" (onClick)="decreaseVolume.emit()"></icon-button>
+    <icon-button icon="add" (onClick)="increaseVolume.emit()"></icon-button>
+  </div>
+
+</div>
